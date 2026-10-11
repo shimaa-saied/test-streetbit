@@ -4,7 +4,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/theming/app_colors.dart';
 import '../../../auth/presentation/screens/login_screen.dart';
-import '../../../home/presentation/screens/home_shell.dart';
+
+import '../../../main_layout/main_layout_screen.dart';
 import '../cubit/splash_cubit.dart';
 import '../cubit/splash_state.dart';
 
@@ -45,7 +46,7 @@ class _SplashScreenState extends State<SplashScreen>
         if (state is SplashAuthenticated) {
           Navigator.pushReplacement(
             context,
-            MaterialPageRoute(builder: (_) => const HomeShell()),
+            MaterialPageRoute(builder: (_) => const MainLayoutScreen()),
           );
         } else if (state is SplashUnauthenticated) {
           Navigator.pushReplacement(

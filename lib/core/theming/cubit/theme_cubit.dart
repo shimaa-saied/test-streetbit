@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:street_bite_test/core/preferences/app_preferences.dart';
 
-import '../preferences/app_preferences.dart';
 
 class ThemeCubit extends Cubit<ThemeMode> {
   final AppPreferences _prefs;

@@ -3,9 +3,9 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'core/cubit/theme_cubit.dart';
 import 'core/dependency_injection/injection.dart';
 import 'core/theming/app_theme.dart';
+import 'core/theming/cubit/theme_cubit.dart';
 import 'features/splash/presentation/cubit/splash_cubit.dart';
 import 'features/splash/presentation/screens/splash_screen.dart';
 import 'firebase_options.dart';

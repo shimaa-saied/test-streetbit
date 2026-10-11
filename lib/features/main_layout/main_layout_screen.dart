@@ -1,26 +1,27 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
-import 'favorites_tab.dart';
-import 'home_tab.dart';
-import 'orders_tab.dart';
-import 'profile_tab.dart';
+import '../home/presentation/screens/favorites_screen.dart';
+import '../home/presentation/screens/home_screen.dart';
+import '../home/presentation/screens/orders_screen.dart';
+import '../home/presentation/screens/profile_screen.dart';
 
-class HomeShell extends StatefulWidget {
-  const HomeShell({super.key});
+
+class MainLayoutScreen extends StatefulWidget {
+  const MainLayoutScreen({super.key});
 
   @override
-  State<HomeShell> createState() => _HomeShellState();
+  State<MainLayoutScreen> createState() => _MainLayoutScreenState();
 }
 
-class _HomeShellState extends State<HomeShell> {
+class _MainLayoutScreenState extends State<MainLayoutScreen> {
   int _currentIndex = 0;
 
   static const List<Widget> _tabs = [
-    HomeTab(),
-    FavoritesTab(),
-    OrdersTab(),
-    ProfileTab(),
+    HomeScreen(),
+    FavoritesScreen(),
+    OrdersScreen(),
+    ProfileScreen(),
   ];
 
   @override

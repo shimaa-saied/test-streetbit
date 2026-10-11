@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/dependency_injection/injection.dart';
-import '../../../home/presentation/screens/home_shell.dart';
+
+import '../../../main_layout/main_layout_screen.dart';
 import '../cubit/auth_cubit.dart';
 import '../cubit/auth_state.dart';
 import '../widgets/auth_text_field.dart';
@@ -62,7 +63,7 @@ class _SignUpBodyState extends State<_SignUpBody> {
         if (state is AuthAuthenticated) {
           Navigator.pushAndRemoveUntil(
             context,
-            MaterialPageRoute(builder: (_) => const HomeShell()),
+            MaterialPageRoute(builder: (_) => const MainLayoutScreen()),
             (route) => false,
           );
         } else if (state is AuthError) {
