@@ -17,6 +17,14 @@ class MainLayoutScreen extends StatefulWidget {
 class _MainLayoutScreenState extends State<MainLayoutScreen> {
   int _currentIndex = 0;
 
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    // Register as a dependent of EasyLocalization so the navbar
+    // rebuilds immediately when the language changes.
+    context.locale;
+  }
+
   static const List<Widget> _tabs = [
     HomeScreen(),
     FavoritesScreen(),
