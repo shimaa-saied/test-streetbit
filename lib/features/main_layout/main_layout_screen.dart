@@ -1,10 +1,10 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
-import '../home/presentation/screens/favorites_screen.dart';
+import '../favorites/favorites_screen.dart';
 import '../home/presentation/screens/home_screen.dart';
 import '../home/presentation/screens/orders_screen.dart';
-import '../home/presentation/screens/profile_screen.dart';
+import '../profile/profile_screen.dart';
 
 
 class MainLayoutScreen extends StatefulWidget {

@@ -8,7 +8,7 @@ class SplashCubit extends Cubit<SplashState> {
 
   Future<void> checkAuthState() async {
     await Future.delayed(const Duration(milliseconds: 1500));
-    final user = FirebaseAuth.instance.currentUser;
+    final user = FirebaseAuth.instance.currentUser; //check if this user is authenticated
     if (user != null) {
       emit(SplashAuthenticated());
     } else {

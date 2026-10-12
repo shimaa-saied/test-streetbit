@@ -1,11 +1,11 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../core/dependency_injection/injection.dart';
-import '../../../../core/theming/cubit/theme_cubit.dart';
-import '../../../auth/presentation/cubit/auth_cubit.dart';
-import '../../../auth/presentation/cubit/auth_state.dart';
-import '../../../auth/presentation/screens/login_screen.dart';
+import '../../core/dependency_injection/injection.dart';
+import '../../core/theming/cubit/theme_cubit.dart';
+import '../auth/presentation/cubit/auth_cubit.dart';
+import '../auth/presentation/cubit/auth_state.dart';
+import '../auth/presentation/screens/login_screen.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -14,13 +14,13 @@ class ProfileScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (_) => getIt<AuthCubit>(),
-      child: const _ProfileBody(),
+      child: const ProfileBodyWidget(),
     );
   }
 }
 
-class _ProfileBody extends StatelessWidget {
-  const _ProfileBody();
+class ProfileBodyWidget extends StatelessWidget {
+  const ProfileBodyWidget({super.key});
 
   void _showLogoutDialog(BuildContext context) {
     showDialog<void>(
