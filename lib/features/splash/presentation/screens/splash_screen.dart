@@ -1,10 +1,8 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import '../../../../core/theming/app_colors.dart';
 import '../../../auth/presentation/screens/login_screen.dart';
-
 import '../../../main_layout/main_layout_screen.dart';
 import '../cubit/splash_cubit.dart';
 import '../cubit/splash_state.dart';

@@ -25,6 +25,7 @@ class AuthTextFieldWidget extends StatelessWidget {
       obscureText: obscureText,
       keyboardType: keyboardType,
       validator: validator,
+      autovalidateMode: AutovalidateMode.onUserInteraction,
       decoration: InputDecoration(labelText: label, suffixIcon: suffixIcon),
     );
   }

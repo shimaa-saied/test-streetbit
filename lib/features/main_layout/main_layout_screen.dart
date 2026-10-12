@@ -20,9 +20,7 @@ class _MainLayoutScreenState extends State<MainLayoutScreen> {
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    // Register as a dependent of EasyLocalization so the navbar
-    // rebuilds immediately when the language changes.
-    context.locale;
+     context.locale;
   }
 
   static const List<Widget> _tabs = [
