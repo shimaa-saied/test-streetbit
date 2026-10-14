@@ -16,3 +16,8 @@ class CartRemoveItem extends CartEvent {
   final String mealId;
   const CartRemoveItem(this.mealId);
 }
+
+/// Removes all items from the cart (e.g. on logout).
+class CartClearAll extends CartEvent {
+  const CartClearAll();
+}
