@@ -49,5 +49,19 @@
   "errorWeakPassword": "Password is too weak.",
   "errorNetworkRequest": "Network error. Check your connection.",
   "errorTooManyRequests": "Too many attempts. Try again later.",
-  "errorInvalidCredential": "Invalid email or password."
+  "errorInvalidCredential": "Invalid email or password.",
+  "featuredMeals": "Featured Meals",
+  "hotOffers": "Hot Picks",
+  "hotPick": "Hot Pick",
+  "liveMenu": "Live Menu",
+  "addToCart": "Add to Cart",
+  "addedToCart": "{meal} added to cart",
+  "mealsError": "Could not load meals. Check your connection and try again.",
+  "retryButton": "Retry",
+  "noMealsAvailable": "No meals available",
+  "toggleTheme": "Toggle Theme",
+  "cartTab": "Cart",
+  "cartTitle": "My Cart",
+  "cartEmpty": "Your cart is empty",
+  "removeItem": "Remove"
 }

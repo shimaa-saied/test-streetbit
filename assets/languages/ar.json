@@ -49,5 +49,19 @@
   "errorWeakPassword": "كلمة المرور ضعيفة جداً.",
   "errorNetworkRequest": "خطأ في الشبكة. تحقق من اتصالك.",
   "errorTooManyRequests": "محاولات كثيرة. حاول مرة أخرى لاحقاً.",
-  "errorInvalidCredential": "البريد الإلكتروني أو كلمة المرور غير صحيحة."
+  "errorInvalidCredential": "البريد الإلكتروني أو كلمة المرور غير صحيحة.",
+  "featuredMeals": "الوجبات المميزة",
+  "hotOffers": "الأكثر طلباً",
+  "hotPick": "مميز",
+  "liveMenu": "القائمة الحية",
+  "addToCart": "أضف للسلة",
+  "addedToCart": "تمت إضافة {meal} إلى السلة",
+  "mealsError": "تعذر تحميل الوجبات. تحقق من اتصالك وحاول مرة أخرى.",
+  "retryButton": "إعادة المحاولة",
+  "noMealsAvailable": "لا توجد وجبات متاحة",
+  "toggleTheme": "تبديل المظهر",
+  "cartTab": "السلة",
+  "cartTitle": "سلتي",
+  "cartEmpty": "سلتك فارغة",
+  "removeItem": "إزالة"
 }

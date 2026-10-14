@@ -1,6 +1,6 @@
 abstract final class ApiEndpoints {
-  // Auth
-  static const String baseUrl = 'https://api.streetbite.com/v1';
-  static const String login = '/auth/login';
-  static const String register = '/auth/register';
+  // ── TheMealDB (free dev key = 1) ─────────────────────────────────────────
+  static const String mealDbBaseUrl = 'https://www.themealdb.com/api/json/v1/1';
+  static const String searchMealsByLetter = '/search.php'; // ?f=a
+  static const String mealDetails = '/lookup.php'; // ?i={mealId}
 }
