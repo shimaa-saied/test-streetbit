@@ -5,7 +5,6 @@ import 'package:street_bite_test/features/auth/presentation/widgets/sign_up_body
 import '../../../../core/dependency_injection/injection.dart';
 import '../cubit/auth_cubit.dart';
 
-
 class SignUpScreen extends StatelessWidget {
   const SignUpScreen({super.key});
 
@@ -17,4 +16,3 @@ class SignUpScreen extends StatelessWidget {
     );
   }
 }
-
