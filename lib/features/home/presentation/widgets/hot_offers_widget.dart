@@ -2,8 +2,8 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../cart/presentation/bloc/cart_bloc.dart';
-import '../../../cart/presentation/bloc/cart_event.dart';
+
+import '../../../cart/presentation/cubit/cart_cubit.dart';
 import '../../domain/entities/meal_entity.dart';
 
 /// Horizontal scrolling list of hot picks (up to 5 meals).
@@ -118,7 +118,7 @@ class _HotOfferCard extends StatelessWidget {
                     width: double.infinity,
                     child: FilledButton.tonal(
                       onPressed: () {
-                        context.read<CartBloc>().add(CartAddItem(meal));
+                        context.read<CartCubit>().addItem(meal);
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(
                             content: Text(

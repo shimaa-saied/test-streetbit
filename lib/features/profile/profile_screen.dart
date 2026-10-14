@@ -6,8 +6,8 @@ import '../../core/theming/cubit/theme_cubit.dart';
 import '../auth/presentation/cubit/auth_cubit.dart';
 import '../auth/presentation/cubit/auth_state.dart';
 import '../auth/presentation/screens/login_screen.dart';
-import '../cart/presentation/bloc/cart_bloc.dart';
-import '../cart/presentation/bloc/cart_event.dart';
+
+import '../cart/presentation/cubit/cart_cubit.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -55,7 +55,7 @@ class ProfileBodyWidget extends StatelessWidget {
     return BlocListener<AuthCubit, AuthState>(
       listener: (context, state) {
         if (state is AuthLoggedOut) {
-          context.read<CartBloc>().add(const CartClearAll());
+          context.read<CartCubit>().clearAll();
           Navigator.pushAndRemoveUntil(
             context,
             MaterialPageRoute(builder: (_) => const LoginScreen()),

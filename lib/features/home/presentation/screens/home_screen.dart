@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:street_bite_test/core/dependency_injection/injection.dart';
 import 'package:street_bite_test/core/theming/cubit/theme_cubit.dart';
-
 import '../../domain/entities/meal_entity.dart';
 import '../cubit/meals_cubit.dart';
 import '../cubit/meals_state.dart';
@@ -13,7 +12,6 @@ import '../widgets/meal_card_widget.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
-
   @override
   Widget build(BuildContext context) {
     return BlocProvider.value(
@@ -94,22 +92,10 @@ class _ErrorBody extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Icon(
-              Icons.wifi_off_rounded,
-              size: 64,
-              color: Theme.of(context).colorScheme.error,
-            ),
-            const SizedBox(height: 16),
             Text(
               messageKey.tr(),
               textAlign: TextAlign.center,
               style: Theme.of(context).textTheme.bodyLarge,
-            ),
-            const SizedBox(height: 24),
-            ElevatedButton.icon(
-              onPressed: () => context.read<MealsCubit>().loadMeals(),
-              icon: const Icon(Icons.refresh_rounded),
-              label: Text('retryButton'.tr()),
             ),
           ],
         ),

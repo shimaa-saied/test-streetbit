@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
+import '../../features/cart/presentation/cubit/cart_cubit.dart';
 import '../api/api_endpoints.dart';
 import '../api/api_services.dart';
 import '../api/dio_factory.dart';
@@ -13,7 +13,6 @@ import '../../features/auth/domain/usecases/login_usecase.dart';
 import '../../features/auth/domain/usecases/logout_usecase.dart';
 import '../../features/auth/domain/usecases/sign_up_usecase.dart';
 import '../../features/auth/presentation/cubit/auth_cubit.dart';
-import '../../features/cart/presentation/bloc/cart_bloc.dart';
 import '../../features/home/data/datasources/meal_datasource_factory.dart';
 import '../../features/home/data/datasources/meal_local_datasource.dart';
 import '../../features/home/data/datasources/meal_remote_datasource.dart';
@@ -54,7 +53,7 @@ Future<void> setupDependencies() async {
   );
 
   // ── Cart ──────────────────────────────────────────────────────────────────
-  getIt.registerLazySingleton<CartBloc>(() => CartBloc());
+  getIt.registerLazySingleton<CartCubit>(() => CartCubit());
 
   // ── Splash ────────────────────────────────────────────────────────────────
   getIt.registerFactory<SplashCubit>(() => SplashCubit());

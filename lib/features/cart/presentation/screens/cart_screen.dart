@@ -1,10 +1,8 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-import '../bloc/cart_bloc.dart';
-import '../bloc/cart_event.dart';
-import '../bloc/cart_state.dart';
+import '../cubit/cart_cubit.dart';
+import '../cubit/cart_state.dart';
 
 class CartScreen extends StatelessWidget {
   const CartScreen({super.key});
@@ -18,7 +16,7 @@ class CartScreen extends StatelessWidget {
           style: const TextStyle(fontWeight: FontWeight.bold),
         ),
       ),
-      body: BlocBuilder<CartBloc, CartState>(
+      body: BlocBuilder<CartCubit, CartState>(
         builder: (ctx, state) {
           if (state.items.isEmpty) {
             return Center(
@@ -90,9 +88,8 @@ class CartScreen extends StatelessWidget {
                         Icons.remove_circle_outline_rounded,
                         color: Theme.of(ctx).colorScheme.error,
                       ),
-                      onPressed: () => ctx.read<CartBloc>().add(
-                        CartRemoveItem(item.meal.id),
-                      ),
+                      onPressed: () =>
+                          ctx.read<CartCubit>().removeItem(item.meal.id),
                     ),
                   ],
                 ),

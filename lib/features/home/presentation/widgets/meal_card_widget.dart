@@ -1,9 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-import '../../../cart/presentation/bloc/cart_bloc.dart';
-import '../../../cart/presentation/bloc/cart_event.dart';
+import '../../../cart/presentation/cubit/cart_cubit.dart';
 import '../../domain/entities/meal_entity.dart';
 
 /// Grid card for the Live Menu section.
@@ -77,7 +75,7 @@ class MealCardWidget extends StatelessWidget {
                     width: double.infinity,
                     child: ElevatedButton(
                       onPressed: () {
-                        context.read<CartBloc>().add(CartAddItem(meal));
+                        context.read<CartCubit>().addItem(meal);
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(
                             content: Text(

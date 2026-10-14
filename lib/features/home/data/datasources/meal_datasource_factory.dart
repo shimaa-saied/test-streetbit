@@ -14,6 +14,7 @@ import 'meal_remote_datasource.dart';
 /// for the data→domain mapping, keeping [MealRepository] free of Data-layer
 /// types.
 class MealDataSourceFactory {
+  // two data sources
   final MealRemoteDataSource _remote;
   final MealLocalDataSource _local;
 

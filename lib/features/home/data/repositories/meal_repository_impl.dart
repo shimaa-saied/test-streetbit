@@ -18,3 +18,24 @@ class MealRepositoryImpl implements MealRepository {
     return models.map((m) => m.toEntity()).toList();
   }
 }
+
+/*
+models = [
+  MealModel(name: 'Pizza'),
+  MealModel(name: 'Burger'),
+];
+
+
+//models.map((m) => m.toEntity())//
+MealEntity(name: 'Pizza'),
+MealEntity(name: 'Burger'),
+
+
+
+//.toList()
+return [
+  MealEntity(name: 'Pizza'),
+  MealEntity(name: 'Burger'),
+];
+
+ */

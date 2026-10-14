@@ -2,9 +2,8 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:street_bite_test/core/dependency_injection/injection.dart';
-
-import '../cart/presentation/bloc/cart_bloc.dart';
-import '../cart/presentation/bloc/cart_state.dart';
+import '../cart/presentation/cubit/cart_cubit.dart';
+import '../cart/presentation/cubit/cart_state.dart';
 import '../cart/presentation/screens/cart_screen.dart';
 import '../favorites/favorites_screen.dart';
 import '../home/presentation/screens/home_screen.dart';
@@ -36,10 +35,10 @@ class _MainLayoutScreenState extends State<MainLayoutScreen> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider.value(
-      value: getIt<CartBloc>(),
+      value: getIt<CartCubit>(),
       child: Scaffold(
         body: _tabs[_currentIndex],
-        bottomNavigationBar: BlocSelector<CartBloc, CartState, int>(
+        bottomNavigationBar: BlocSelector<CartCubit, CartState, int>(
           selector: (state) => state.itemCount,
           builder: (ctx, cartCount) => NavigationBar(
             selectedIndex: _currentIndex,

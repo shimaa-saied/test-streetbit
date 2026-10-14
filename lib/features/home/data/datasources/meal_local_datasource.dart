@@ -15,11 +15,12 @@ class MealLocalDataSource {
     final jsonStr = _prefs.getString(_cacheKey);
     if (jsonStr == null) return [];
     try {
-      final list = json.decode(jsonStr) as List<dynamic>;
+      final list =
+          json.decode(jsonStr) as List<dynamic>; // convert the JSON into a list
       return list
-          .whereType<Map<String, dynamic>>()
+          .whereType<Map<String, dynamic>>() // filter
           .map(MealModel.fromJson)
-          .toList();
+          .toList(); //List<MealModel>
     } catch (_) {
       // Malformed or outdated JSON — treat as empty cache.
       return [];
@@ -31,3 +32,12 @@ class MealLocalDataSource {
     await _prefs.setString(_cacheKey, jsonStr);
   }
 }
+
+/*
+                [
+              {"id": "1", "name": "Pizza"},                   Map
+              {"id": "2", "name": "Burger"},                  Map
+              "Hello",                                        Strings
+               123                                            Numbers
+               ]
+*/

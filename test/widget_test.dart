@@ -1,8 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:street_bite_test/core/api/api_services.dart';
-import 'package:street_bite_test/features/cart/presentation/bloc/cart_bloc.dart';
-import 'package:street_bite_test/features/cart/presentation/bloc/cart_event.dart';
+import 'package:street_bite_test/features/cart/presentation/cubit/cart_cubit.dart';
 import 'package:street_bite_test/features/home/data/datasources/meal_datasource_factory.dart';
 import 'package:street_bite_test/features/home/data/datasources/meal_local_datasource.dart';
 import 'package:street_bite_test/features/home/data/datasources/meal_remote_datasource.dart';
@@ -314,10 +313,10 @@ void main() {
     );
   });
 
-  // ── CartBloc ───────────────────────────────────────────────────────────────
+  // ── CartCubit ──────────────────────────────────────────────────────────────
 
-  group('CartBloc', () {
-    late CartBloc bloc;
+  group('CartCubit', () {
+    late CartCubit cubit;
 
     const meal1 = MealEntity(
       id: '1',
@@ -334,81 +333,64 @@ void main() {
       thumbnailUrl: 'https://example.com/pizza.jpg',
     );
 
-    setUp(() => bloc = CartBloc());
-    tearDown(() => bloc.close());
+    setUp(() => cubit = CartCubit());
+    tearDown(() => cubit.close());
 
     test('initial state has an empty cart and zero item count', () {
-      expect(bloc.state.items, isEmpty);
-      expect(bloc.state.itemCount, 0);
+      expect(cubit.state.items, isEmpty);
+      expect(cubit.state.itemCount, 0);
     });
 
-    test('CartAddItem: adds a new meal with quantity 1', () async {
-      bloc.add(CartAddItem(meal1));
-      final state = await bloc.stream.first;
-      expect(state.items.length, 1);
-      expect(state.items.first.meal.id, '1');
-      expect(state.items.first.quantity, 1);
-      expect(state.itemCount, 1);
+    test('addItem: adds a new meal with quantity 1', () {
+      cubit.addItem(meal1);
+      expect(cubit.state.items.length, 1);
+      expect(cubit.state.items.first.meal.id, '1');
+      expect(cubit.state.items.first.quantity, 1);
+      expect(cubit.state.itemCount, 1);
     });
 
-    test(
-      'CartAddItem: increments quantity when the same meal is added again',
-      () async {
-        bloc
-          ..add(CartAddItem(meal1))
-          ..add(CartAddItem(meal1));
-        final states = await bloc.stream.take(2).toList();
-        final finalState = states.last;
-        expect(finalState.items.length, 1);
-        expect(finalState.items.first.quantity, 2);
-        expect(finalState.itemCount, 2);
-      },
-    );
-
-    test('CartAddItem: keeps distinct meals as separate cart items', () async {
-      bloc
-        ..add(CartAddItem(meal1))
-        ..add(CartAddItem(meal2));
-      final states = await bloc.stream.take(2).toList();
-      final finalState = states.last;
-      expect(finalState.items.length, 2);
-      expect(finalState.itemCount, 2);
+    test('addItem: increments quantity when the same meal is added again', () {
+      cubit
+        ..addItem(meal1)
+        ..addItem(meal1);
+      expect(cubit.state.items.length, 1);
+      expect(cubit.state.items.first.quantity, 2);
+      expect(cubit.state.itemCount, 2);
     });
 
-    test(
-      'CartRemoveItem: decrements quantity when quantity is greater than 1',
-      () async {
-        bloc
-          ..add(CartAddItem(meal1))
-          ..add(CartAddItem(meal1))
-          ..add(CartRemoveItem(meal1.id));
-        final states = await bloc.stream.take(3).toList();
-        final finalState = states.last;
-        expect(finalState.items.length, 1);
-        expect(finalState.items.first.quantity, 1);
-        expect(finalState.itemCount, 1);
-      },
-    );
-
-    test('CartRemoveItem: removes item from cart when quantity is 1', () async {
-      bloc
-        ..add(CartAddItem(meal1))
-        ..add(CartRemoveItem(meal1.id));
-      final states = await bloc.stream.take(2).toList();
-      final finalState = states.last;
-      expect(finalState.items, isEmpty);
-      expect(finalState.itemCount, 0);
+    test('addItem: keeps distinct meals as separate cart items', () {
+      cubit
+        ..addItem(meal1)
+        ..addItem(meal2);
+      expect(cubit.state.items.length, 2);
+      expect(cubit.state.itemCount, 2);
     });
 
-    test('CartRemoveItem: does not affect other items in the cart', () async {
-      bloc
-        ..add(CartAddItem(meal1))
-        ..add(CartAddItem(meal2))
-        ..add(CartRemoveItem(meal1.id));
-      final states = await bloc.stream.take(3).toList();
-      final finalState = states.last;
-      expect(finalState.items.length, 1);
-      expect(finalState.items.first.meal.id, '2');
+    test('removeItem: decrements quantity when quantity is greater than 1', () {
+      cubit
+        ..addItem(meal1)
+        ..addItem(meal1)
+        ..removeItem(meal1.id);
+      expect(cubit.state.items.length, 1);
+      expect(cubit.state.items.first.quantity, 1);
+      expect(cubit.state.itemCount, 1);
+    });
+
+    test('removeItem: removes item from cart when quantity is 1', () {
+      cubit
+        ..addItem(meal1)
+        ..removeItem(meal1.id);
+      expect(cubit.state.items, isEmpty);
+      expect(cubit.state.itemCount, 0);
+    });
+
+    test('removeItem: does not affect other items in the cart', () {
+      cubit
+        ..addItem(meal1)
+        ..addItem(meal2)
+        ..removeItem(meal1.id);
+      expect(cubit.state.items.length, 1);
+      expect(cubit.state.items.first.meal.id, '2');
     });
   });
 }

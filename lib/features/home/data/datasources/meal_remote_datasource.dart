@@ -23,7 +23,6 @@ class MealRemoteDataSource {
     });
 
     final results = await Future.wait(futures);
-
     final seen = <String>{};
     final meals = <MealModel>[];
     for (final batch in results) {
@@ -39,6 +38,7 @@ class MealRemoteDataSource {
     return meals;
   }
 
+  // Fetch meals by specific letter.
   Future<List<MealModel>> _fetchByLetter(String letter) async {
     final response = await _apiServices.getMealsByLetter(letter);
     return (response.meals ?? [])
